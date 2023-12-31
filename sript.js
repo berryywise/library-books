@@ -2,6 +2,11 @@ let myLibrary = [];
 let container = document.querySelector(".container")
 let confirmbutton = document.querySelector("#confirm-button")
 
+let authorinput = document.querySelector("#author")
+let titleinput = document.querySelector("#title")
+let pagesinput = document.querySelector("#pages")
+let readinput = document.querySelector("#read")
+
 
 function Book (title, author, pages, read) {
     this.title = title;
@@ -9,35 +14,31 @@ function Book (title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = function() {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read = "on" ? "read" : "not yet read"}`
     }
 }
 
 
 const addToLibrary = () => {
 
-    let authorinput = document.querySelector("#author").value
-    let titleinput = document.querySelector("#title").value
-    let pagesinput = document.querySelector("#pages").value
-    let readinput = document.querySelector("#read").value
-
-    let obj = new Book(titleinput, authorinput, pagesinput, readinput);
+    let obj = new Book(titleinput.value, authorinput.value, pagesinput.value, readinput.value);
 
     myLibrary.push(obj);
 
     console.log(myLibrary);
 }
 
-const refreshUI = array => {
+const refreshUI = () => {
 
+    container.innerHTML = "";
     
-    array.forEach(element => {
+    myLibrary.forEach(element => {
 
-        let para = document.createElement("p");
+        let para = document.createElement("button");
 
         para.classList.add("books")
 
-        para.innerText = element;
+        para.innerHTML = element.info();
 
         container.appendChild(para);
 
@@ -48,14 +49,14 @@ const refreshUI = array => {
 
 confirmbutton.addEventListener("click", event => {
 
-    addToLibrary();
+    if(authorinput.value && pagesinput.value && titleinput.value != "") {
 
+        addToLibrary();
+        refreshUI();
+
+    }
 
 })
-
-
-refreshUI(["test", "test", "test","test", "test", "test","test", "test", "test"]);
-
 
 // const book1 = new Book("Zippie", "Berry", "322", "read")
 // console.log(book1.info())
