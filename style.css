@@ -2,3 +2,40 @@
     text-align: center;
     background-color: beige;
 }
+
+.container {
+    margin-top: 150px;
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    gap: 10px;
+}
+
+.add-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+.books {
+
+    border: 1px solid red;
+    padding: 25px 60px;
+    border-radius: 5px;
+    font-size: 25px;
+
+}
