@@ -14,14 +14,14 @@ function Book (title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = function() {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read = "on" ? "read" : "not yet read"}`
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read == true ? "read" : "not read yet"}`
     }
 }
 
 
 const addToLibrary = () => {
 
-    let obj = new Book(titleinput.value, authorinput.value, pagesinput.value, readinput.value);
+    let obj = new Book(titleinput.value, authorinput.value, pagesinput.value, readinput.checked);
 
     myLibrary.push(obj);
 
@@ -49,7 +49,7 @@ const refreshUI = () => {
 
 confirmbutton.addEventListener("click", event => {
 
-    if(authorinput.value && pagesinput.value && titleinput.value != "") {
+    if(authorinput.value && pagesinput.value && titleinput.value !== "") {
 
         addToLibrary();
         refreshUI();
@@ -57,6 +57,3 @@ confirmbutton.addEventListener("click", event => {
     }
 
 })
-
-// const book1 = new Book("Zippie", "Berry", "322", "read")
-// console.log(book1.info())
