@@ -25,7 +25,7 @@
     gap: 30px;
 }
 
-button {
+#confirm-button {
     padding: 10px 20px;
     border-radius: 5px;
 }
@@ -38,4 +38,14 @@ button {
     border-radius: 5px;
     font-size: 25px;
 
+}
+
+.remove {
+    background-color: red;
+    color: white;
+    position: relative;
+    left: 55px;
+    bottom: 29px;
+    font-size: 10px;
+    font-weight: bold;
 }

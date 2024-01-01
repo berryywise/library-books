@@ -1,8 +1,8 @@
 let myLibrary = [];
 let container = document.querySelector(".container")
 let confirmbutton = document.querySelector("#confirm-button")
-
 let authorinput = document.querySelector("#author")
+let removebutton = document.querySelectorAll(".remove")
 let titleinput = document.querySelector("#title")
 let pagesinput = document.querySelector("#pages")
 let readinput = document.querySelector("#read")
@@ -25,25 +25,51 @@ const addToLibrary = () => {
 
     myLibrary.push(obj);
 
-    console.log(myLibrary);
+    titleinput.value = "";
+    authorinput.value = "";
+    pagesinput.value = "";
+    readinput.checked = false;
+
 }
 
 const refreshUI = () => {
 
     container.innerHTML = "";
     
-    myLibrary.forEach(element => {
+    myLibrary.forEach((element, index) => {
 
-        let para = document.createElement("button");
+        if(element != undefined) {
 
-        para.classList.add("books")
-
-        para.innerHTML = element.info();
-
-        container.appendChild(para);
+            let para = document.createElement("div");
+            let remove = document.createElement("button");
+    
+            remove.textContent = "X";
+            remove.classList.add("remove");
+    
+            para.classList.add("books")
+            para.setAttribute("index", index )
+            para.innerHTML = element.info()
+            para.appendChild(remove);
+    
+            container.appendChild(para);
+        }
 
     });
+    
+    removebutton = document.querySelectorAll(".remove");
 
+    removebutton.forEach(button => {
+
+        button.addEventListener("click", event => {
+    
+            let indextoremove = event.currentTarget.parentNode.getAttribute("index");
+
+            myLibrary[indextoremove] = undefined;
+            event.currentTarget.parentNode.remove();
+            
+            })
+    
+    })
 
 }
 
@@ -57,3 +83,4 @@ confirmbutton.addEventListener("click", event => {
     }
 
 })
+
