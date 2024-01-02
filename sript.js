@@ -19,6 +19,12 @@ function Book (title, author, pages, read) {
     }
 }
 
+Book.prototype.testMethod = function() {
+
+    this.read = "test";
+
+}
+
 
 const addToLibrary = () => {
 
@@ -107,4 +113,5 @@ confirmbutton.addEventListener("click", event => {
     }
 
 })
+
 
