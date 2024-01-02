@@ -6,6 +6,7 @@ let removebutton = document.querySelectorAll(".remove")
 let titleinput = document.querySelector("#title")
 let pagesinput = document.querySelector("#pages")
 let readinput = document.querySelector("#read")
+let readbutton = document.querySelectorAll(".read-button");
 
 
 function Book (title, author, pages, read) {
@@ -42,6 +43,10 @@ const refreshUI = () => {
 
             let para = document.createElement("div");
             let remove = document.createElement("button");
+            let read = document.createElement("button");
+
+            read.textContent = "read/unread"
+            read.classList.add("read-button")
     
             remove.textContent = "X";
             remove.classList.add("remove");
@@ -50,6 +55,7 @@ const refreshUI = () => {
             para.setAttribute("index", index )
             para.innerHTML = element.info()
             para.appendChild(remove);
+            para.append(read);
     
             container.appendChild(para);
         }
@@ -57,6 +63,7 @@ const refreshUI = () => {
     });
     
     removebutton = document.querySelectorAll(".remove");
+    readbutton = document.querySelectorAll(".read-button");
 
     removebutton.forEach(button => {
 
@@ -69,6 +76,23 @@ const refreshUI = () => {
             
             })
     
+    })
+
+    readbutton.forEach(read => {
+
+        read.addEventListener("click", event => {
+
+            let indexread = event.currentTarget.parentNode.getAttribute("index");
+
+            if (myLibrary[indexread].read == true) {
+                myLibrary[indexread].read = false;
+            } else {
+                myLibrary[indexread].read = true;
+            }
+
+            refreshUI();
+            
+        })
     })
 
 }

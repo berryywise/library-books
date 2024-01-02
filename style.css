@@ -44,8 +44,20 @@
     background-color: red;
     color: white;
     position: relative;
-    left: 55px;
+    left: 115px;
     bottom: 29px;
     font-size: 10px;
     font-weight: bold;
+}
+
+.read-button {
+
+    background-color: red;
+    color: white;
+    position: relative;
+    right: 155px;
+    bottom: -23px; 
+    font-size: 10px;
+    font-weight: bold;
+
 }
