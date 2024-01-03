@@ -10,18 +10,19 @@ let readbutton = document.querySelectorAll(".read-button");
 
 
 function Book (title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read == true ? "read" : "not read yet"}`
+    
+    
+    const info = function() {
+        return `${title} by ${author}, ${pages} pages, ${this.read == true ? "read" : "not read yet"}`
     }
-}
+    
+    const setRead = function () {
 
-Book.prototype.testMethod = function() {
+        this.read == true ? this.read = false : this.read = true
 
-    this.read = "test";
+    }
+
+    return {title, author, pages, read, info, setRead}
 
 }
 
@@ -90,11 +91,7 @@ const refreshUI = () => {
 
             let indexread = event.currentTarget.parentNode.getAttribute("index");
 
-            if (myLibrary[indexread].read == true) {
-                myLibrary[indexread].read = false;
-            } else {
-                myLibrary[indexread].read = true;
-            }
+            myLibrary[indexread].setRead();
 
             refreshUI();
             
